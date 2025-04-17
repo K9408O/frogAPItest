@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>API 測試頁</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <dev>
+        <button onclick="location.href='api.html'">前往 API 頁面</button>
+        <button onclick="location.href='page1.html'">輸入顯示</button>
+        <button onclick="location.href='page2.html'">照片尺寸</button>
+    </dev>
+    <hr>
+    <h2>📨 傳送訊息到後端</h2>
+
+    <input type="text" id="userInput" placeholder="輸入你的訊息..." />
+    <button onclick="sendMessage()">送出</button>
+
+    <div id="response"></div>
+
+    <br>
+    <h2>🐲 取得鱷鱷語錄</h2>
+    <button onclick="getSentence()">點我取得語錄</button>
+
+    <div id="result"></div>
+
+    <script>
+        //傳入後端
+        function sendMessage() {
+            const input = document.getElementById('userInput').value
+            //使用 fetch() 送出 POST 請求到後端 API /submit
+            fetch('http://localhost:3000/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },// 告訴後端這次送的是 JSON 格式的資料
+                body: JSON.stringify({ message: input }) // 把 input 包成 JSON 傳給後端
+            })
+                .then(response => response.json())//後端回應，並把回傳的 JSON 轉回 JavaScript 物件
+                .then(data => {
+                    document.getElementById('response').textContent = `✅ 後端回應：${data.received}`
+                })//從後端回應裡拿出 data.received，然後顯示在網頁上的 <div id="response"> 裡
+                .catch(error => {
+                    console.error('傳送失敗:', error)
+                    document.getElementById('response').textContent = '❌ 無法送出，請檢查伺服器'
+                });
+        }
+        //取得後端資料
+        function getSentence() {
+            fetch('http://localhost:3000/sentence') // 呼叫後端的 API
+                .then(response => response.json())//把後端json轉js物件
+                .then(data => {
+                    document.getElementById('result').textContent = data.sentence
+                })//顯示在id=result框
+                .catch(error => {
+                    console.error('取得語錄失敗:', error)
+                    document.getElementById('result').textContent = '😢 伺服器無回應'
+                });
+        }
+    </script>
+</body>
+
+</html>

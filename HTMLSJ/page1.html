@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>第1題：輸入顯示</title>
+    <link rel="stylesheet" href="css/style.css" />
+
+</head>
+
+<body>
+    <dev>
+        <button onclick="location.href='api.html'">前往 API 頁面</button>
+        <button onclick="location.href='page1.html'">輸入顯示</button>
+        <button onclick="location.href='page2.html'">照片尺寸</button>
+    </dev>
+    <hr>
+    <h2>請輸入內容：</h2>
+    <input type="text" id="inputText" placeholder="請輸入文字..." />
+    <button onclick="showValue()">確認</button>
+
+    <div id="output"></div>
+
+    <script>
+        function showValue() {
+            const input = document.getElementById('inputText').value
+            document.getElementById('output').textContent = `你輸入的是：${input}`//把上面input內容放置id=output的地方
+        }
+    </script>
+</body>
+
+</html>

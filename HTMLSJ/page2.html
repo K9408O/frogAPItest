@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>第2題：圖片尺寸切換</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <dev>
+        <button onclick="location.href='api.html'">前往 API 頁面</button>
+        <button onclick="location.href='page1.html'">輸入顯示</button>
+        <button onclick="location.href='page2.html'">照片尺寸</button>
+    </dev>
+    <hr>
+    <h2>圖片尺寸切換</h2>
+    <div>
+        <button onclick="setSize(150)">小</button>
+        <button onclick="setSize(250)">中</button>
+        <button onclick="setSize(350)">大</button>
+    </div>
+    <img id="image" src="image/frog.png" width="200" alt="圖片" />
+
+    <script>
+        function setSize(width) {
+            document.getElementById('image').width = width//把剛剛傳進來的width值指定給圖片的寬度
+        }
+    </script>
+</body>
+
+</html>
