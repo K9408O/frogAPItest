@@ -21,6 +21,7 @@
   <script setup>
   import { ref } from 'vue'
   import { submitMessage, fetchSentence } from '@/services/api' //@ 代表的是 /src 資料夾 ,{}中引用在services上需要用到的方法
+  import '@/assets/styles/base.css'
 
   const inputText = ref('')
   const response = ref('')
@@ -37,21 +38,5 @@ const getSentence = async () => {
 }
   </script>
   
-  <style scoped>
-  .container {
-    max-width: 500px;
-    margin: auto;
-    padding-top: 100px;
-  }
-  
-  input {
-    padding: 8px;
-    width: 80%;
-    margin-right: 8px;
-  }
-  
-  button {
-    padding: 8px 16px;
-  }
-  </style>
+
   

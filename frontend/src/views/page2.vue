@@ -52,7 +52,7 @@
 
 <script setup>
   import { ref } from 'vue'
-  import myImage from '../assets/frog.png'
+  import myImage from '../assets/image/frog.png'
   // 圖片
   const imageUrl = myImage
   
